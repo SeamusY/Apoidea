@@ -26,7 +26,7 @@ export default class App extends React.Component {
       let stringFinder = jsonArray.filter(element => element.length > 50)
       let numberResolver = jsonArray.filter(element => Number.isInteger(element) === false)
       if (jsonArray.length > 50 || stringFinder.length > 0 || numberResolver > 0) throw new Error("Check JSON")
-      this.setState({ isValidJson: true, validJson: JSON.parse(json), rowNumber: json.length })
+      this.setState({ isValidJson: true, validJson: JSON.parse(json), rowNumber: JSON.parse(json).length })
     } catch (e) {
       this.setState({ isValidJson: false });
     }
@@ -78,7 +78,7 @@ export default class App extends React.Component {
       <div className="App">
         <Box sx={{ flexGrow: 1 }} >
           <Grid container spacing={2} justify="center" style={{ maxWidth: '100%' }} align="center" marginTop="auto">
-            <Grid item xs={12} md={6} alignItems={"center"} paddingBottom={2}>
+            <Grid item xs={12} md={6} alignItems={"center"} paddingBottom={2} bgcolor="#CFD2CF">
               <Card sx={{ minWidth: 350, maxWidth: 400 }}>
                 <CardContent sx={{ minWidth: 350, maxWidth: 400 }}>
                   <h2>JSON Text Field</h2>
@@ -113,7 +113,7 @@ export default class App extends React.Component {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid xs={12} md={6}>
+            <Grid xs={12} md={6} bgcolor={"#36454F"}>
               <Box width={"350px"}>
                 <h2> Tree Map Result</h2>
                 {validJson.length > 1 ? this.renderTree() : null}
